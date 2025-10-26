@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:color';
+@use 'variables' as *;
+
+@mixin mq($key) {
+  $size: if(map.has-key($breakpoints, $key), map.get($breakpoints, $key), $key);
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin set-scale($par, $base, $scale) {
+  @for $i from 1 through 18 {
+    $step: $i * 50;
+    $mult: math.div($step, 100);
+    $val: math.div($base, $scale) * math.pow($scale, $mult - 1);
+    --#{$par}-#{$step}: #{$val};
+  }
+}
+
+@mixin export-colors($colors-map) {
+  @each $group, $bucket in $colors-map {
+    @if meta.type-of($bucket) == 'map' {
+      @each $shade, $value in $bucket {
+        $shade-str: if(
+          meta.type-of($shade) == 'color',
+          meta.inspect($shade),
+          $shade
+        );
+        $shade-str: if(
+          meta.type-of($shade-str) == 'string',
+          $shade-str,
+          #{$shade-str}
+        );
+        --clr-#{$group}-#{$shade-str}: #{$value};
+        @if meta.type-of($value) == 'color' {
+          --clr-#{$group}-#{$shade-str}-rgb:
+            #{color.channel($value, 'red', $space: rgb)},
+            #{color.channel($value, 'green', $space: rgb)},
+            #{color.channel($value, 'blue', $space: rgb)};
+        }
+      }
+    } @else {
+      --clr-#{$group}: #{$bucket};
+      @if meta.type-of($bucket) == 'color' {
+        --clr-#{$group}-rgb:
+          #{color.channel($bucket, 'red', $space: rgb)},
+          #{color.channel($bucket, 'green', $space: rgb)},
+          #{color.channel($bucket, 'blue', $space: rgb)};
+      }
+    }
+  }
+}
+
+@mixin base-root() {
+  @include set-scale(fs, $font-base, $scale-font);
+  @include set-scale(pg, $padding-base, $scale-padding);
+}

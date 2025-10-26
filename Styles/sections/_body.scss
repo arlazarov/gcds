@@ -1,0 +1,30 @@
+@use '../base/' as *;
+
+script {
+  display: none;
+}
+
+body {
+  padding: 20px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 100vh 1fr;
+  gap: 20px;
+
+  font-family:
+    inter,
+    system-ui,
+    -apple-system,
+    segoe ui,
+    roboto,
+    arial,
+    sans-serif;
+
+  @include mq('sm') {
+    padding: 20px;
+    display: grid;
+    grid-template-rows: 300px 1fr;
+    grid-template-columns: minmax(300px, 1000px);
+    justify-content: center;
+  }
+}

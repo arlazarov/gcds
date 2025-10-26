@@ -1,0 +1,76 @@
+:root {
+  --road-path: 0% 20%, 100% 0%, 100% 20%, 0% 50%;
+  --line-path: 0% 38%, 100% 8%, 100% 8.5%, 0% 39%;
+  --speed: 0.4s;
+  --edge: 4px;
+  --bottom-left: 50%;
+}
+
+.road {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 36 / 9;
+  background: linear-gradient(#3d5a71, #2f4a5e 55%, #213845);
+  clip-path: polygon(var(--road-path));
+  overflow: hidden;
+}
+
+.road::before,
+.road::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.road::before {
+  background: #2e4658;
+  opacity: 0.9;
+  clip-path: polygon(
+    0% 20%,
+    100% 0%,
+    100% calc(0% + var(--edge)),
+    0% calc(20% + var(--edge))
+  );
+}
+
+.road::after {
+  background: #111c23;
+  opacity: 0.9;
+  clip-path: polygon(
+    0% var(--bottom-left),
+    100% 20%,
+    100% calc(20% - var(--edge)),
+    0% calc(var(--bottom-left) - var(--edge))
+  );
+}
+
+.centerline {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  clip-path: polygon(var(--line-path));
+  overflow: hidden;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.95) 0 40px,
+    transparent 40px 120px
+  );
+  background-size: 120px 100%;
+  background-repeat: repeat;
+  mix-blend-mode: screen;
+  animation: travel var(--speed) linear infinite;
+  will-change: background-position;
+  transform: perspective(800px) rotateY(7deg) translateX(2%);
+  transform-origin: right center;
+}
+
+@keyframes travel {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 120px 0;
+  }
+}

@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'variables' as *;
+
+@function clr($group, $shade, $alpha: null) {
+  @if $alpha == null or $alpha == 1 {
+    @return var(--clr-#{$group}-#{$shade});
+  }
+  @return rgba(var(--clr-#{$group}-#{$shade}-rgb), #{$alpha});
+}
+
+@function _scale-step($base, $scale, $step) {
+  $mult: math.div($step, 100);
+  @return math.div($base, $scale) * math.pow($scale, $mult - 1);
+}
+
+@function fs($step) {
+  @if meta.type-of($step) ==
+    number and
+    $step
+    %
+    50 ==
+    0 and
+    $step >=
+    50 and
+    $step <=
+    900
+  {
+    @return var(--fs-#{$step});
+  }
+  @return _scale-step($font-base, $scale-font, $step);
+}
+
+@function pg($step) {
+  @if meta.type-of($step) ==
+    number and
+    $step
+    %
+    50 ==
+    0 and
+    $step >=
+    50 and
+    $step <=
+    900
+  {
+    @return var(--pg-#{$step});
+  }
+  @return _scale-step($padding-base, $scale-padding, $step);
+}
+
+@function shadow($key) {
+  $val: map.get($shadow, $key);
+  @if $val == null {
+    @error "unknown shadow `#{$key}`";
+  }
+  @return $val;
+}

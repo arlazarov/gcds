@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use '../base/mixins' as mx;
+@use '../base/functions' as fn;
+
+:root {
+  @include mx.base-root();
+
+  font-size: fn.fs(200);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+  display: grid;
+}

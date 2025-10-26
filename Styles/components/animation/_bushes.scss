@@ -1,0 +1,37 @@
+.bushes {
+  position: absolute;
+  top: 99px;
+  left: -5px;
+  height: 100px;
+  width: 105%;
+  overflow: hidden;
+  transform: rotate(-2.9deg);
+  transform-origin: right bottom;
+  z-index: 2;
+}
+
+.bushes__strip {
+  position: absolute;
+  top: 0;
+  left: -996px;
+  height: 100%;
+  width: 2988px;
+  display: flex;
+  animation: bushSlide 10s linear infinite;
+  will-change: transform;
+}
+
+.bushes__tile {
+  flex: 0 0 996px;
+  height: 100%;
+  background: url('/pics/bushes.png') 0 0 / 996px 100% no-repeat;
+}
+
+@keyframes bushSlide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(996px);
+  }
+}

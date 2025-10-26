@@ -1,0 +1,13 @@
+.animation {
+  position: relative;
+  display: grid;
+  grid-template-rows: 200px auto;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #87ceeb 0%,
+    #87ceeb 52%,
+    #a8e672 52%,
+    #66b13e 100%
+  );
+}

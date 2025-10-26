@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use 'sass:string';
+
+$font-base: 0.9rem;
+$padding-base: 0.9rem;
+$scale-font: 1.333;
+$scale-padding: 1.333;
+$media-scale: 1.05;
+
+$breakpoints: (
+  sm: 800px,
+  md: 1050px,
+  bg: 1200px,
+);

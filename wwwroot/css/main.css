@@ -1,0 +1,385 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+script {
+  display: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:root {
+  --fs-50: 0.5847864288rem;
+  --fs-100: 0.6751687922rem;
+  --fs-150: 0.7795203095rem;
+  --fs-200: 0.9rem;
+  --fs-250: 1.0391005726rem;
+  --fs-300: 1.1997rem;
+  --fs-350: 1.3851210633rem;
+  --fs-400: 1.5992001rem;
+  --fs-450: 1.8463663774rem;
+  --fs-500: 2.1317337333rem;
+  --fs-550: 2.461206381rem;
+  --fs-600: 2.8416010665rem;
+  --fs-650: 3.2807881059rem;
+  --fs-700: 3.7878542216rem;
+  --fs-750: 4.3732905452rem;
+  --fs-800: 5.0492096774rem;
+  --fs-850: 5.8295962967rem;
+  --fs-900: 6.7305965rem;
+  --pg-50: 0.5847864288rem;
+  --pg-100: 0.6751687922rem;
+  --pg-150: 0.7795203095rem;
+  --pg-200: 0.9rem;
+  --pg-250: 1.0391005726rem;
+  --pg-300: 1.1997rem;
+  --pg-350: 1.3851210633rem;
+  --pg-400: 1.5992001rem;
+  --pg-450: 1.8463663774rem;
+  --pg-500: 2.1317337333rem;
+  --pg-550: 2.461206381rem;
+  --pg-600: 2.8416010665rem;
+  --pg-650: 3.2807881059rem;
+  --pg-700: 3.7878542216rem;
+  --pg-750: 4.3732905452rem;
+  --pg-800: 5.0492096774rem;
+  --pg-850: 5.8295962967rem;
+  --pg-900: 6.7305965rem;
+  font-size: var(--fs-200);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+  display: grid;
+}
+
+* {
+  font-family: "Segoe UI", Tahoma, Verdana, Arial, sans-serif;
+  font-family: inter, system-ui, -apple-system, segoe ui, roboto, arial, sans-serif;
+}
+
+.animation {
+  position: relative;
+  display: grid;
+  grid-template-rows: 200px auto;
+  overflow: hidden;
+  background: linear-gradient(180deg, #87ceeb 0%, #87ceeb 52%, #a8e672 52%, #66b13e 100%);
+}
+
+:root {
+  --road-path: 0% 20%, 100% 0%, 100% 20%, 0% 50%;
+  --line-path: 0% 38%, 100% 8%, 100% 8.5%, 0% 39%;
+  --speed: 0.4s;
+  --edge: 4px;
+  --bottom-left: 50%;
+}
+
+.road {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 36/9;
+  background: linear-gradient(#3d5a71, #2f4a5e 55%, #213845);
+  clip-path: polygon(var(--road-path));
+  overflow: hidden;
+}
+
+.road::before,
+.road::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.road::before {
+  background: #2e4658;
+  opacity: 0.9;
+  clip-path: polygon(0% 20%, 100% 0%, 100% calc(0% + var(--edge)), 0% calc(20% + var(--edge)));
+}
+
+.road::after {
+  background: #111c23;
+  opacity: 0.9;
+  clip-path: polygon(0% var(--bottom-left), 100% 20%, 100% calc(20% - var(--edge)), 0% calc(var(--bottom-left) - var(--edge)));
+}
+
+.centerline {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  clip-path: polygon(var(--line-path));
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0 40px, transparent 40px 120px);
+  background-size: 120px 100%;
+  background-repeat: repeat;
+  mix-blend-mode: screen;
+  animation: travel var(--speed) linear infinite;
+  will-change: background-position;
+  transform: perspective(800px) rotateY(7deg) translateX(2%);
+  transform-origin: right center;
+}
+
+@keyframes travel {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 120px 0;
+  }
+}
+.bushes {
+  position: absolute;
+  top: 99px;
+  left: -5px;
+  height: 100px;
+  width: 105%;
+  overflow: hidden;
+  transform: rotate(-2.9deg);
+  transform-origin: right bottom;
+  z-index: 2;
+}
+
+.bushes__strip {
+  position: absolute;
+  top: 0;
+  left: -996px;
+  height: 100%;
+  width: 2988px;
+  display: flex;
+  animation: bushSlide 10s linear infinite;
+  will-change: transform;
+}
+
+.bushes__tile {
+  flex: 0 0 996px;
+  height: 100%;
+  background: url("/pics/bushes.png") 0 0/996px 100% no-repeat;
+}
+
+@keyframes bushSlide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(996px);
+  }
+}
+.hills {
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  width: 100%;
+  height: 200px;
+  background: url("/pics/hills.png") repeat-x;
+  z-index: 0;
+  transform: rotate(-1.9deg);
+}
+
+.clouds {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.clouds__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  display: flex;
+  transform: translate3d(-50%, 0, 0);
+  animation: cloudsRight 40s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.clouds__layer svg {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.05));
+}
+
+.clouds__layer--1 {
+  top: 10px;
+  opacity: 0.9;
+  animation-duration: 30s;
+}
+
+.clouds__layer--2 {
+  top: 50px;
+  opacity: 0.8;
+  animation-duration: 50s;
+}
+
+.clouds__layer--3 {
+  top: 80px;
+  opacity: 0.7;
+  animation-duration: 70s;
+}
+
+@keyframes cloudsRight {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+:root {
+  --truck-angle: -1.5deg;
+}
+
+.truck {
+  z-index: 3;
+  position: absolute;
+  top: calc(138px - 2.5vw);
+  right: 5%;
+  aspect-ratio: 4/2;
+  width: calc(150px + 10vw);
+  height: auto;
+  background: center/contain no-repeat url("/pics/truck.png");
+  animation: shake 1s infinite linear;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(var(--truck-angle)) translateY(0);
+  }
+  25% {
+    transform: rotate(calc(var(--truck-angle) + 0.1deg)) translateY(-0.5px);
+  }
+  50% {
+    transform: rotate(calc(var(--truck-angle) - 0.1deg)) translateY(0.5px);
+  }
+  75% {
+    transform: rotate(calc(var(--truck-angle) + 0.05deg)) translateY(-0.3px);
+  }
+  100% {
+    transform: rotate(var(--truck-angle)) translateY(0);
+  }
+}
+.animation .body {
+  z-index: 20;
+}
+.animation .body:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.32) 48%, rgba(0, 0, 0, 0.2) 68%, rgba(0, 0, 0, 0) 84%);
+  z-index: 3;
+}
+@media only screen and (min-width: 800px) {
+  .animation .body:before {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.32) 28%, rgba(0, 0, 0, 0.2) 48%, rgba(0, 0, 0, 0) 64%);
+  }
+}
+.animation .content {
+  position: relative;
+  z-index: 200;
+  padding: 1rem 2rem 2rem;
+  color: #fff;
+}
+@media only screen and (min-width: 800px) {
+  .animation .content {
+    max-width: 40rem;
+    padding: 2rem 3rem 3rem;
+  }
+}
+.animation .content h1 {
+  font-weight: 800;
+  font-size: var(--fs-500);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 0, 0, 0.25);
+}
+.animation .content p {
+  font-weight: 500;
+  font-size: var(--fs-400);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.top_menu {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  padding: 20px 0;
+  align-items: center;
+}
+@media only screen and (min-width: 800px) {
+  .top_menu {
+    grid-template-columns: 220px auto;
+    padding: 5px var(--pg-600);
+  }
+}
+.top_menu .logo {
+  height: 100%;
+  background: url("/pics/logo.png") no-repeat center;
+  background-size: contain;
+}
+
+.home {
+  display: grid;
+  grid-auto-rows: 100px 300px;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,21 @@
+@use '../base' as *;
+
+.top_menu {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  padding: 20px 0;
+  align-items: center;
+
+  @include mq('sm') {
+    grid-template-columns: 220px auto;
+    padding: 5px pg(600);
+  }
+
+  .logo {
+    height: 100%;
+    background: url('/pics/logo.png') no-repeat center;
+    background-size: contain;
+  }
+}

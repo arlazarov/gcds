@@ -1,0 +1,21 @@
+<div class="animation">
+  <div class="body">@ChildContent</div>
+  <div class="hills"></div>
+  <div class="truck"></div>
+  <div class="bushes">
+    <div class="bushes__strip">
+      <div class="bushes__tile"></div>
+      <div class="bushes__tile"></div>
+      <div class="bushes__tile"></div>
+    </div>
+  </div>
+  <Clouds/>
+  <div class="road">
+    <div class="centerline"></div>
+  </div>
+
+</div>
+
+@code {
+  [Parameter] public RenderFragment? ChildContent { get; set; }
+}
