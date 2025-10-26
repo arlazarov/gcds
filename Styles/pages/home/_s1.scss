@@ -1,0 +1,60 @@
+@use '../../base' as *;
+
+.s1 {
+  // background: #f3f6fa;
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  padding: pg(600) pg(400);
+  gap: pg(400);
+
+  @include mq('md') {
+    padding: pg(500) pg(500);
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: pg(600);
+  }
+
+  .box {
+    display: grid;
+    justify-items: center;
+    gap: pg(200);
+    padding: pg(300) pg(200);
+    background: #fff;
+    align-content: start;
+    border-radius: 14px;
+    border: 1px solid #e6edf5;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  }
+
+  .material-symbols-rounded {
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 700,
+      'GRAD' 0,
+      'opsz' 48;
+    font-size: fs(700);
+    line-height: 1;
+    color: #e53935;
+    background: #fdecec;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+  }
+
+  h2 {
+    font-size: fs(300);
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.2px;
+  }
+
+  p {
+    font-size: fs(200);
+    color: #475569;
+    line-height: 1.5;
+    max-width: 38ch;
+    margin-inline: auto;
+  }
+}
