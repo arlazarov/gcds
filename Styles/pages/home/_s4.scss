@@ -21,7 +21,7 @@
     grid-template-columns: 1fr;
     align-items: stretch;
 
-    @include mq('sm') {
+    @include mq('md') {
       grid-template-columns: 1fr 1.2fr;
     }
   }

@@ -17,7 +17,7 @@
     grid-template-columns: 1fr;
     gap: pg(500);
 
-    @include mq('sm') {
+    @include mq('md') {
       grid-template-columns: repeat(3, 1fr);
       gap: pg(600);
     }
