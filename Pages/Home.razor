@@ -1,91 +1,95 @@
-﻿@using GCDS.Components
+﻿@page "/"
+@using GCDS.Components
 @using GCDS.Components.Animation
-
-@page "/"
 
 <PageTitle>Home</PageTitle>
 
+<Transition>
 <div class="home-page">
-  <div class="top_menu">
-    <div class="logo"></div>
-    <Nav/>
+  <section id="home" class="hero">
+    <Animation>
+     <div class="content" data-anim="up" data-once="false" id="quote-rotator">
+<div class="quote active">
+    <h2>Start your truck driving career</h2>
+    <p>Train with confidence, earn your AZ or DZ license, and open the road to a stable career in Canada’s trucking industry.</p>
   </div>
-  <Animation>
-    <div class="content">
-      <h1>Start your truck driving career</h1>
-      <p>
-        Become a professional truck driver with our comprehensive training
-        programs.
-      </p>
-    </div>
-  </Animation>
+  <div class="quote">
+    <h2>Learn from real professionals</h2>
+    <p>Our certified instructors bring decades of hands-on experience to make you job-ready from day one.</p>
+  </div>
+  <div class="quote">
+    <h2>Hands-on training with real trucks</h2>
+    <p>Get behind the wheel, master your skills, and build the confidence you need for cross-border operations.</p>
+  </div>
+  <div class="quote">
+    <h2>We help you get hired</h2>
+    <p>Partnered with trusted carriers, we connect you with employers looking for qualified, safety-focused drivers.</p>
+  </div>
+      </div>
+    </Animation>
+  </section>
 
-  <section class="s1 reveal">
-    <div class="box">
+  <section class="s1">
+    <div class="box reveal" data-anim="scale" data-once="false">
       <span class="material-symbols-rounded">school</span>
       <h2>Experienced Instructors</h2>
       <p>Learn from certified professionals with years of real-world trucking experience, ready to guide you every step of the way.</p>
     </div>
-
-    <div class="box">
-      <span class="material-symbols-rounded">front_hand
-</span>
+    <div class="box reveal" data-anim="left" data-once="false">
+      <span class="material-symbols-rounded">front_hand</span>
       <h2>Hands-On Training</h2>
       <p>Get behind the wheel from day one — real trucks, real roads, real confidence.</p>
     </div>
-
-    <div class="box">
+    <div class="box reveal" data-anim="right" data-once="false">
       <span class="material-symbols-rounded">work</span>
       <h2>Job Placement Assistance</h2>
       <p>We help you connect with trusted carriers and land a stable job right after graduation.</p>
     </div>
-
-    <div class="box">
+    <div class="box reveal" data-anim="up" data-once="false">
       <span class="material-symbols-rounded">schedule</span>
       <h2>Flexible Schedules</h2>
       <p>We offer convenient class times for working students — train at your own pace without compromising your goals.</p>
     </div>
   </section>
 
-  <section class="s2 reveal">
-    <h2>Why Choose Us?</h2>
-    <p>At Great Canada Driving School, we are committed to your success. Our comprehensive training programs are designed to equip you with the skills and knowledge needed to excel in the trucking industry. With experienced instructors, hands-on training, and job placement assistance, we provide everything you need to kickstart your career.</p>
-  </section>
+  <Transition>
+    <section class="s2" id="why_us">
+      <div class="reveal" data-anim="up" data-once="false">
+        <h2>Why Choose Us?</h2>
+        <p>At Great Canada Driving School, we are committed to your success. Our comprehensive training programs are designed to equip you with the skills and knowledge needed to excel in the trucking industry. With experienced instructors, hands-on training, and job placement assistance, we provide everything you need to kickstart your career.</p>
+      </div>
+    </section>
+  </Transition>
 
-  <section class="s3 reveal">
-    <h2>Our Programs</h2>
-    <div class="programs">
-      <div class="program">
+  <section class="s3" id="courses">
+    <h2 class="reveal" data-anim="up" data-once="false">Our Programs</h2>
+    <div class="programs" data-stagger>
+      <div class="program reveal" data-anim="up" data-once="false">
         <h3>AZ License</h3>
         <p>Comprehensive training for tractor-trailers and highway operations across Canada and the U.S.</p>
         <a href="/az" class="btn">Learn More</a>
       </div>
-
-      <div class="program">
+      <div class="program reveal" data-anim="up" data-once="false">
         <h3>DZ License</h3>
         <p>Focused instruction for straight trucks, dump trucks, and other medium-duty commercial vehicles.</p>
         <a href="/dz" class="btn">Learn More</a>
       </div>
-
-      <div class="program">
+      <div class="program reveal" data-anim="up" data-once="false">
         <h3>G2 / G License</h3>
         <p>Personal vehicle driver training designed for beginners and road test preparation.</p>
         <a href="/g" class="btn">Learn More</a>
       </div>
-
-      <div class="program">
+      <div class="program reveal" data-anim="up" data-once="false">
         <h3>Air Brake (Z) Endorsement</h3>
         <p>Learn the operation, inspection, and maintenance of air brake systems required for commercial vehicles.</p>
         <a href="/airbrake" class="btn">Learn More</a>
       </div>
-
-      <div class="program">
+      <div class="program reveal" data-anim="up" data-once="false">
         <h3>Refresher Course</h3>
         <p>Short-term training for licensed drivers who want to regain confidence and upgrade their skills.</p>
         <a href="/refresher" class="btn">Learn More</a>
       </div>
-
-      <div class="program">
+      <div class="program reveal" data-anim="up" data-once="false">
         <h3>Corporate Fleet Training</h3>
         <p>Custom safety and compliance programs for companies operating commercial fleets.</p>
         <a href="/corporate" class="btn">Learn More</a>
@@ -93,17 +97,17 @@
     </div>
   </section>
 
-  <section class="s4 reveal">
-    <h2 class="s4-title">Contact Us</h2>
-
+  <section class="s4" id="contact">
+    <div class="reveal" data-anim="up" data-once="false">
+      <h2 class="s4-title">Contact Us</h2>
+    </div>
     <div class="contact-wrapper">
-      <div class="left">
+      <div class="left reveal" data-anim="left" data-once="false">
         <div class="info">
           <p><strong>Phone:</strong> (416) 999-7557</p>
           <p><strong>Email:</strong> info@greatcanadadrivingschool.ca</p>
           <p><strong>Address:</strong> 212 - 1750 Steeles Ave W, Vaughan, ON,  L4K 2L7</p>
         </div>
-
         <div class="form-wrap">
           <h3>Get in Touch</h3>
           <form class="form">
@@ -114,16 +118,10 @@
           </form>
         </div>
       </div>
-
-      <div class="right">
-      <iframe
-        src="https://www.google.com/maps?q=212%20-%201750%20Steeles%20Ave%20W,%20Vaughan,%20ON,%20L4K%202L7&output=embed"
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <div class="right reveal" data-anim="right" data-once="false">
+        <iframe src="https://www.google.com/maps?q=212%20-%201750%20Steeles%20Ave%20W,%20Vaughan,%20ON,%20L4K%202L7&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
-
 </div>
+</Transition>

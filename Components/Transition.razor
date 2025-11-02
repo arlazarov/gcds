@@ -1,0 +1,16 @@
+<Animate Animation="@Animation"
+         DurationMilliseconds="@Duration"
+         DelayMilliseconds="@Delay"
+         Anchor="@Anchor"
+         Once="@Once">
+    @ChildContent
+</Animate>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public IAnimation Animation { get; set; } = Animations.FadeIn;
+    [Parameter] public int Duration { get; set; } = 3000;
+    [Parameter] public int Delay { get; set; } = 0;
+    [Parameter] public string? Anchor { get; set; } = null;
+    [Parameter] public bool Once { get; set; } = false;
+}

@@ -18,3 +18,28 @@ body > * {
   z-index: 1;
   display: grid;
 }
+:root {
+  --header-h: 150px;
+  @include mx.mq('sm') {
+    --header-h: 72px;
+  }
+}
+html {
+  // scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+section[id]::before {
+  content: '';
+  display: block;
+  height: var(--header-h);
+  margin-top: calc(-1 * var(--header-h));
+  visibility: hidden;
+  pointer-events: none;
+}
+
+main::after {
+  content: '';
+  display: block;
+  height: var(--header-h);
+}

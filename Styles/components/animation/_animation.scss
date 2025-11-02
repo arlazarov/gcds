@@ -1,3 +1,5 @@
+@use '../../base' as *;
+
 .animation {
   height: 300px;
   position: relative;
@@ -11,4 +13,62 @@
     #a8e672 52%,
     #66b13e 100%
   );
+}
+
+#quote-rotator {
+  z-index: 200;
+  position: absolute;
+  inset: 0;
+  display: grid;
+}
+
+#quote-rotator .quote {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  max-width: 40rem;
+  line-height: 1.3;
+  color: #fff;
+  margin-inline: auto;
+  padding: pg(200);
+
+  @include mq('sm') {
+    padding: pg(500);
+  }
+}
+
+#quote-rotator .quote h2 {
+  font-size: fs(500);
+  font-weight: 800;
+  margin-bottom: 0.4em;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  text-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+#quote-rotator .quote p {
+  font-size: fs(400);
+  font-weight: 500;
+  opacity: 0.9;
+  max-width: 70ch;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  text-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+#quote-rotator .quote.active {
+  opacity: 1;
+  transform: translateY(0);
 }

@@ -1,0 +1,27 @@
+.course-page.g {
+  h1 {
+    color: #2e7d32;
+  }
+
+  .tier.premium {
+    border-color: #2e7d32;
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.15);
+  }
+
+  .facts div:hover {
+    background: #f5fff5;
+  }
+
+  a {
+    color: #2e7d32;
+  }
+
+  .faq-item:hover {
+    border-color: #2e7d32;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.1);
+  }
+
+  .compare table td b {
+    color: #2e7d32;
+  }
+}

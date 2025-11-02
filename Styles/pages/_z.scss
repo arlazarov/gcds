@@ -1,0 +1,27 @@
+.course-page.airbrake {
+  h1 {
+    color: #1e4976;
+  }
+
+  .tier.premium {
+    border-color: #1e4976;
+    box-shadow: 0 8px 20px rgba(30, 73, 118, 0.15);
+  }
+
+  .facts div:hover {
+    background: #f5f9ff;
+  }
+
+  a {
+    color: #1e4976;
+  }
+
+  .faq-item:hover {
+    border-color: #1e4976;
+    box-shadow: 0 4px 12px rgba(30, 73, 118, 0.1);
+  }
+
+  .compare table td b {
+    color: #1e4976;
+  }
+}

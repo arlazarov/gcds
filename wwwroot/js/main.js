@@ -1,41 +1,59 @@
-(function () {
-  let ticking = false;
+(function animInit() {
+  function mount() {
+    // window.scrollTo = undefined;
+    document.body.classList.add('anim');
 
-  function updateVisibility() {
-    const blocks = document.querySelectorAll('.program, .reveal');
-    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const els = document.querySelectorAll('.reveal, .program');
+    if (!els.length) return;
 
-    blocks.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const fullyOut = rect.bottom <= 0 || rect.top >= vh;
-      const partlyVisible = rect.bottom > 0 && rect.top < vh;
+    const io = new IntersectionObserver(
+      entries => {
+        for (const e of entries) {
+          const el = e.target;
+          if (e.isIntersecting) {
+            el.classList.add('visible');
+          } else {
+            el.classList.remove('visible');
+          }
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px 10% 0px' },
+    );
 
-      if (partlyVisible) {
-        el.classList.add('visible');
-      } else if (fullyOut) {
-        el.classList.remove('visible');
+    els.forEach(el => io.observe(el));
+  }
+
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+
+  const obs = new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.addedNodes.length > 0) {
+        if (document.querySelector('.reveal, .program')) {
+          mount();
+          break;
+        }
       }
-    });
-    ticking = false;
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(updateVisibility);
-      ticking = true;
     }
-  }
+  });
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  window.addEventListener('load', updateVisibility);
-  document.addEventListener('DOMContentLoaded', updateVisibility);
+  obs.observe(document.body, { childList: true, subtree: true });
+})();
 
-  new MutationObserver(() => requestAnimationFrame(updateVisibility)).observe(
-    document.body,
-    {
-      childList: true,
-      subtree: true,
-    },
-  );
+(function waitForRotator() {
+  const container = document.getElementById('quote-rotator');
+  if (!container) return setTimeout(waitForRotator, 300);
+
+  const quotes = container.querySelectorAll('.quote');
+  if (!quotes.length) return;
+
+  let index = 0;
+  quotes[0].classList.add('active');
+
+  setInterval(() => {
+    quotes[index].classList.remove('active');
+    index = (index + 1) % quotes.length;
+    quotes[index].classList.add('active');
+  }, 10000);
 })();

@@ -9,11 +9,12 @@ nav {
   font-size: fs(200);
 
   @include mq('sm') {
-    font-size: fs(300);
+    font-size: fs(250);
+    gap: pg(400);
+    justify-content: center;
   }
 
   @include mq('md') {
-    gap: pg(300);
     justify-content: space-between;
   }
 
