@@ -1,14 +1,19 @@
 #!/bin/bash
 
-echo "Watching SCSS files..."
+echo "[WATCH] Starting SCSS watcher..."
 
-find Styles -name "*.scss" | \
-entr -r bash -c '
-  sass Styles/main.scss wwwroot/css/main.css
+sass --style=compressed --watch Styles/main.scss:wwwroot/css/main.css &
+sass_pid=$!
 
+cleanup() {
+  echo "[EXIT] Stopping watcher..."
+  kill $sass_pid 2>/dev/null
+  exit 0
+}
+trap cleanup SIGINT SIGTERM
+
+fswatch -o Styles | while read; do
   timestamp=$(date +%s)
-  target="wwwroot/index.html"
-
-  sed -i "" "s|main\.css?v=[0-9a-zA-Z]*|main.css?v=${timestamp}|" "$target"
-  echo "[BUILD] Compiled SCSS..."
-'
+  perl -pi -e "s|href=\"css/main\.css(\?v=\d+)?\"|href=\"css/main.css?v=${timestamp}\"|g" wwwroot/index.html
+  echo "[BUILD] CSS rebuilt and version updated: ${timestamp}"
+done

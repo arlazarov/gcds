@@ -21,7 +21,7 @@ body > * {
 :root {
   --header-h: 150px;
   @include mx.mq('sm') {
-    --header-h: 72px;
+    --header-h: 90px;
   }
 }
 html {
@@ -38,8 +38,8 @@ section[id]::before {
   pointer-events: none;
 }
 
-main::after {
-  content: '';
-  display: block;
-  height: var(--header-h);
-}
+// main::after {
+//   content: '';
+//   display: block;
+//   height: var(--header-h);
+// }

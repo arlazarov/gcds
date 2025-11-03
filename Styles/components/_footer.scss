@@ -48,6 +48,15 @@
     color: #e2e8f0;
   }
 
+  .footer-center {
+    h3 {
+      margin-bottom: pg(50);
+    }
+    p {
+      padding: 3px;
+    }
+  }
+
   .socials {
     display: flex;
     gap: pg(400);
@@ -82,7 +91,7 @@
       color: #94a3b8;
     }
   }
-  @include mq('md') {
+  @include mq('bg') {
     padding-top: pg(600);
     .footer-inner {
       grid-template-columns: 1fr 1fr 1fr;
